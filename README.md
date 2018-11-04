@@ -38,4 +38,4 @@ generator.setVersion("v1.3");
 generator.generate("test.pdf", 800);
 ```
 
-![alt text](https://raw.githubusercontent.com/binarskugga/PrintableQRGenerator/master/result.png)
+![Result](https://raw.githubusercontent.com/BinarSkugga/PrintableQRGenerator/master/result.png)
