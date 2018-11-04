@@ -4,15 +4,12 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import io.nayuki.qrcodegen.*;
 import lombok.*;
-import lombok.experimental.*;
 
 import javax.imageio.*;
 import java.awt.image.*;
 import java.io.*;
 
-@SuperBuilder
-@NoArgsConstructor
-public class QRSerialGenerator {
+public abstract class QRSerialGenerator {
 
 	public static final float UNIT_INCH_RATIO = 72;
 
