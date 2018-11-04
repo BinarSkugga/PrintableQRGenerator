@@ -39,4 +39,5 @@ generator.generate("test.pdf", 800);
 ```
 
 > QR codes in the image might not be scanable because of poor quality.
+
 ![Result](https://raw.githubusercontent.com/BinarSkugga/PrintableQRGenerator/master/result.png)
