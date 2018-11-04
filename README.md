@@ -37,3 +37,5 @@ generator.setVersion("v1.3");
 // Generate 800 stickers (fitting on exactly 10 pages) in the test.pdf file.
 generator.generate("test.pdf", 800);
 ```
+
+![alt text](https://raw.githubusercontent.com/binarskugga/PrintableQRGenerator/master/result.png)
