@@ -33,6 +33,8 @@ generator.setLineSize(4);
 generator.setPrefix("TEST");
 // This is an arbitrary value. The label to the right of the QR will contain the prefix and the version.
 generator.setVersion("v1.3");
+// This is how your label is formatted. {0} is the value, {1} is the prefix and {2} is the version
+generator.setLabelFormat("{1}-{2}");
 
 // Generate 800 stickers (fitting on exactly 10 pages) in the test.pdf file.
 generator.generate("test.pdf", 800);
