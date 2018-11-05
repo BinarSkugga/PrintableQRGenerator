@@ -40,6 +40,6 @@ generator.setLabelFormat("{1}-{2}");
 generator.generate("test.pdf", 800);
 ```
 
-> QR codes in the image might not be scanable because of poor quality.
+> Click on the image to test scan it.
 
 ![Result](https://raw.githubusercontent.com/BinarSkugga/PrintableQRGenerator/master/result.png)
