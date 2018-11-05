@@ -8,7 +8,6 @@ import lombok.*;
 import javax.imageio.*;
 import java.awt.image.*;
 import java.io.*;
-import java.text.*;
 
 public abstract class QRSerialGenerator {
 
@@ -114,7 +113,7 @@ public abstract class QRSerialGenerator {
 		catch(Exception ignored) {}
 		finally {
 			document.close();
-			System.out.println("All " + amount + " codes generated in: " + (System.currentTimeMillis() - time) + "ms");
+			System.err.println("All " + amount + " codes generated in: " + (System.currentTimeMillis() - time) + "ms");
 		}
 	}
 
