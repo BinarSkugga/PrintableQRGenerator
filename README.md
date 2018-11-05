@@ -1,6 +1,5 @@
-# PrintableQRGenerator
-Generates tables of QR codes for automated serial sticker printing. Can be configured with Avery formats provided some mearsurements.
-
+# New features
+Please let me know via an issue if you want a new feature !
 
 # Simple use
 ``` java
