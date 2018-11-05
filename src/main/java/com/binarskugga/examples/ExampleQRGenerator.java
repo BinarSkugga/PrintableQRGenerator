@@ -4,11 +4,16 @@ import com.binarskugga.*;
 
 import java.util.*;
 
-public class ExampleQRGenerator extends QRSerialGenerator {
+public class ExampleQRGenerator extends QRSerialGenerator<UUID> {
 
 	@Override
-	protected String nextValue(String previous) {
-		return UUID.randomUUID().toString();
+	protected UUID nextValue(UUID previous) {
+		return UUID.randomUUID();
+	}
+
+	@Override
+	protected String toLabel(UUID current) {
+		return "UUID v" + current.version();
 	}
 
 }
