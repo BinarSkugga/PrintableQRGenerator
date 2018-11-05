@@ -1,5 +1,5 @@
 # New features
-Please let me know via an issue if you want a new feature !
+Please let me know via an issue if you want a new feature ! You can even make it yourself and make a pull request ! :)
 
 # Simple use
 ``` java
