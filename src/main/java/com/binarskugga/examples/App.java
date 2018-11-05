@@ -15,7 +15,7 @@ public class App {
 		// All rectangles take values in inches.
 		// This is the size of the sheet of paper.
 		generator.setPageSize(new RectangleReadOnly(8.5f, 11f));
-		// This is the margins around your stickers.
+		// This is the margins around your page.
 		generator.setOutsetMargin(new RectangleReadOnly(5f / 16f, 0.5f));
 		// This is the margins between your stickers.
 		generator.setInsetMargin(new RectangleReadOnly(5f / 16f, 0));
@@ -43,7 +43,7 @@ public class App {
 		// All rectangles take values in inches.
 		// This is the size of the sheet of paper.
 		collectionGenerator.setPageSize(new RectangleReadOnly(8.5f, 11f));
-		// This is the margins around your stickers.
+		// This is the margins around your page.
 		collectionGenerator.setOutsetMargin(new RectangleReadOnly(5f / 16f, 0.5f));
 		// This is the margins between your stickers.
 		collectionGenerator.setInsetMargin(new RectangleReadOnly(5f / 16f, 0));
