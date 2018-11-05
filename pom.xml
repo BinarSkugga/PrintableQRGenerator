@@ -6,7 +6,7 @@
 
 	<groupId>com.binarskugga</groupId>
 	<artifactId>qrcodegenerator</artifactId>
-	<version>1.0-</version>
+	<version>1.0.1</version>
 
 	<name>qrcodegenerator</name>
 	<url>https://binarskugga.com</url>

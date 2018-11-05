@@ -8,6 +8,7 @@ import lombok.*;
 import javax.imageio.*;
 import java.awt.image.*;
 import java.io.*;
+import java.text.*;
 
 public abstract class QRSerialGenerator {
 
@@ -34,6 +35,9 @@ public abstract class QRSerialGenerator {
 
 	@Getter @Setter
 	private String version;
+
+	@Getter @Setter
+	private String labelFormat = "{1}-{2}";
 
 	protected String nextValue(String previous) {
 		return null;
@@ -86,11 +90,15 @@ public abstract class QRSerialGenerator {
 				pdfQR.scaleAbsolute(new Rectangle(this.stickerSize.getHeight() * UNIT_INCH_RATIO, this.stickerSize.getHeight() * UNIT_INCH_RATIO));
 				Chunk imgChunk = new Chunk(pdfQR, 0, -15);
 
-				Phrase label = new Phrase(this.prefix + "-" + this.version, FontFactory.getFont(FontFactory.HELVETICA, 8));
+				labelFormat = labelFormat.replaceAll("\\{0}", value)
+						.replaceAll("\\{1}", this.prefix)
+						.replaceAll("\\{2}", this.version);
+
+				Phrase label = new Phrase(labelFormat, FontFactory.getFont(FontFactory.HELVETICA, 8));
 
 				Paragraph element = new Paragraph();
 				element.add(imgChunk);
-				element.add("      ");
+				element.add("    ");
 				element.add(label);
 				element.setLeading(this.stickerSize.getHeight() * UNIT_INCH_RATIO);
 				element.setAlignment(Element.ALIGN_LEFT);
