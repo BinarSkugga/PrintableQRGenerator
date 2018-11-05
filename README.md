@@ -18,6 +18,7 @@ public class ExampleQRGenerator extends QRSerialGenerator<UUID> {
 }
 ```
 ``` java
+// This example works with the Avery template #5167
 QRSerialGenerator<UUID> generator = new ExampleQRGenerator();
 
 generator.setPageSize(new RectangleReadOnly(8.5f, 11f));
