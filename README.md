@@ -20,7 +20,7 @@ QRSerialGenerator generator = new ExampleQRGenerator();
 // All rectangles take values in inches.
 // This is the size of the sheet of paper.
 generator.setPageSize(new RectangleReadOnly(8.5f, 11f));
-// This is the margins around your stickers.
+// This is the margins around your page.
 generator.setOutsetMargin(new RectangleReadOnly(5f / 16f, 0.5f));
 // This is the margins between your stickers.
 generator.setInsetMargin(new RectangleReadOnly(5f / 16f, 0));
@@ -38,4 +38,6 @@ generator.setVersion("v1.3");
 generator.generate("test.pdf", 800);
 ```
 
-![alt text](https://raw.githubusercontent.com/binarskugga/PrintableQRGenerator/master/result.png)
+> QR codes in the image might not be scanable because of poor quality.
+
+![Result](https://raw.githubusercontent.com/BinarSkugga/PrintableQRGenerator/master/result.png)
