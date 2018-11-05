@@ -17,27 +17,27 @@ public abstract class QRSerialGenerator<T> {
 	public static final float UNIT_INCH_RATIO = 72;
 
 	/**
-	 * This is the physical measurement for the sheet of paper you are using for printing the codes.
+	 * This is the physical measurement (in inches) for the sheet of paper you are using for printing the codes.
 	 */
 	@Getter @Setter
 	@Builder.Default
 	private RectangleReadOnly pageSize = new RectangleReadOnly(8.5f, 11f);
 
 	/**
-	 * This is the physical measurement of one single sticker.
+	 * This is the physical measurement (in inches) of one single sticker.
 	 */
 	@Getter @Setter
 	private RectangleReadOnly stickerSize;
 
 	/**
-	 * This is the physical measurement of the padding around the whole page. Height will be used for bottom
+	 * This is the physical measurement (in inches) of the padding around the whole page. Height will be used for bottom
 	 * and top while width will be used for left and right.
 	 */
 	@Getter @Setter
 	private RectangleReadOnly outsetMargin;
 
 	/**
-	 * This is the physical measurement of the spacing between stickers. Height will be used for bottom
+	 * This is the physical measurement (in inches) of the spacing between stickers. Height will be used for bottom
 	 * and top while width will be used for left and right.
 	 */
 	@Getter @Setter
