@@ -17,6 +17,31 @@ public abstract class QRSerialGenerator<T> {
 	public static final float UNIT_INCH_RATIO = 72;
 
 	/**
+	 * Error correction tolerance. This is used to scan partially broken codes. A low level can be scanned until 5%
+	 * of its content is destroyed. A high level can tolerate up to 30%.
+	 */
+	@Getter @Setter
+	private QrCode.Ecc ecc = QrCode.Ecc.HIGH;
+
+	/**
+	 * The byte format of the image generated in the PDF. Using PNG can severely hit performance.
+	 */
+	@Getter @Setter
+	private String imageFormat = "JPG";
+
+	/**
+	 * The font family of the label to the right of the code.
+	 */
+	@Getter @Setter
+	private String labelFont = FontFactory.HELVETICA;
+
+	/**
+	 * The font size in pts of the label to the right of the code.
+	 */
+	@Getter @Setter
+	private int labelFontSize = 8;
+
+	/**
 	 * This is the physical measurement (in inches) for the sheet of paper you are using for printing the codes.
 	 */
 	@Getter @Setter
@@ -142,16 +167,16 @@ public abstract class QRSerialGenerator<T> {
 				T value = nextValue(previousValue);
 				previousValue = value;
 
-				QrCode qr0 = QrCode.encodeText(toValue(value), QrCode.Ecc.HIGH);
+				QrCode qr0 = QrCode.encodeText(toValue(value), this.ecc);
 				BufferedImage img = qr0.toImage(4, 8);
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
-				ImageIO.write(img, "JPG", baos);
+				ImageIO.write(img, this.imageFormat, baos);
 				Image pdfQR = Image.getInstance(baos.toByteArray());
 
 				pdfQR.scaleAbsolute(new Rectangle(this.stickerSize.getHeight() * UNIT_INCH_RATIO, this.stickerSize.getHeight() * UNIT_INCH_RATIO));
 				Chunk imgChunk = new Chunk(pdfQR, 0, -15);
 
-				Phrase label = new Phrase(toLabel(value), FontFactory.getFont(FontFactory.HELVETICA, 8));
+				Phrase label = new Phrase(toLabel(value), FontFactory.getFont(this.labelFont, this.labelFontSize));
 
 				Paragraph element = new Paragraph();
 				element.add(imgChunk);
