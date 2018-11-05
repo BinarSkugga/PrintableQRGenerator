@@ -11,34 +11,82 @@ import java.io.*;
 
 public abstract class QRSerialGenerator<T> {
 
+	/**
+	 * Default ratio of a PDF document. This is specified in the standard, one user unit is 1/72 of an inch.
+	 */
 	public static final float UNIT_INCH_RATIO = 72;
 
+	/**
+	 * This is the physical measurement for the sheet of paper you are using for printing the codes.
+	 */
 	@Getter @Setter
 	@Builder.Default
 	private RectangleReadOnly pageSize = new RectangleReadOnly(8.5f, 11f);
 
+	/**
+	 * This is the physical measurement of one single sticker.
+	 */
 	@Getter @Setter
 	private RectangleReadOnly stickerSize;
 
+	/**
+	 * This is the physical measurement of the padding around the whole page. Height will be used for bottom
+	 * and top while width will be used for left and right.
+	 */
 	@Getter @Setter
 	private RectangleReadOnly outsetMargin;
 
+	/**
+	 * This is the physical measurement of the spacing between stickers. Height will be used for bottom
+	 * and top while width will be used for left and right.
+	 */
 	@Getter @Setter
 	private RectangleReadOnly insetMargin;
 
+	/**
+	 * This is the amount of stickers on a single line.
+	 */
 	@Getter @Setter
 	private int lineSize;
 
+
+	/**
+	 * This is the total amount of stickers to be produced. If the the amount % lineSize is not equals to 0,
+	 * the library will create dummy cells to complete the last row.
+	 */
 	@Getter @Setter
 	protected int batchSize;
 
-	protected abstract T nextValue(T previous);
-	protected abstract String toLabel(T current);
 
+	/**
+	 * Provider for the value to use next. Previous is passed to it for sequential generation.
+	 * Collection generators do not use this method.
+	 * @param previous The element processed before the current one.
+	 * @return Return the element to process next.
+	 */
+	protected abstract T nextValue(T previous);
+
+	/**
+	 * Method to transform your object to a string. This string will be the exact value returned
+	 * from scanning the corresponding QR code.
+	 * @param current The element to use to create a value
+	 * @return The QR code text value.
+	 */
 	protected String toValue(T current) {
 		return current.toString();
 	}
 
+	/**
+	 * Method to create the label standing to the right of the QR code.
+	 * @param current The value to use to generate the label.
+	 * @return The string value for the label.
+	 */
+	protected abstract String toLabel(T current);
+
+	/**
+	 * Generate the pdf file with all the codes. Generating large amount of stickers (>10 000) can take a while.
+	 * @param file The destination pdf file.
+	 */
 	public void generate(String file) {
 		long time = System.currentTimeMillis();
 		boolean needDummies = false;
