@@ -27,7 +27,7 @@ public class App {
 
 		// Generate 800 stickers (fitting on exactly 10 pages) into "simple-generator.pdf".
 		generator.setBatchSize(800);
-		//generator.generate("simple-generator.pdf");
+		generator.generate("simple-generator.pdf");
 
 
 		// This example works with the Avery template #5167
