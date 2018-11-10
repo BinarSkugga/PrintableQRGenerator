@@ -138,7 +138,16 @@ public abstract class QRSerialGenerator<T> {
 			float cellWidth = this.stickerSize.getWidth() * UNIT_INCH_RATIO;
 
 			PdfPTable table = new PdfPTable(this.lineSize * 2);
-			table.setTotalWidth(new float[]{cellWidth, spacingWidth, cellWidth, spacingWidth, cellWidth, spacingWidth, cellWidth, 0});
+			float[] totalWidth = new float[this.lineSize * 2];
+			for(int i = 0; i < totalWidth.length; i++) {
+				if(i == totalWidth.length - 1) {
+					totalWidth[i] = 0;
+					continue;
+				}
+				if(i % 2 == 0) totalWidth[i] = cellWidth;
+				if(i % 2 > 0) totalWidth[i] = spacingWidth;
+			}
+			table.setTotalWidth(totalWidth);
 			table.setLockedWidth(true);
 			table.setSpacingAfter(0);
 			table.setSpacingBefore(0);
